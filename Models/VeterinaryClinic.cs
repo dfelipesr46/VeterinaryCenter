@@ -120,6 +120,13 @@ namespace VeterinaryCenter.Models
                 ManagerApp.Separator();
 
                 Console.Write($"¿El ladrido del perro a cambiado? o presione enter para mantener el mismo ({dog.BarkVolume}): ");
+                Console.WriteLine(@"
+                1. No ladra
+                2. Normal
+                3. Ladrido fuerte
+
+                Escriba el número según corresponda: 
+                ");
                 string? barkVolumeUpdate = Console.ReadLine();
                 barkVolumeUpdate = barkVolumeUpdate.Trim().ToLower();
                 string? newBarkVolumeUpdate = null;
@@ -217,7 +224,7 @@ namespace VeterinaryCenter.Models
                 cat.SetColor(string.IsNullOrEmpty(colorUpdate) ? cat.GetColor() : colorUpdate);
                 cat.SetWeightInKg(weightInKgUpdate == null ? cat.GetWeightInkg() : weightInKgUpdate);
                 cat.BreedingStatus = newBreedingStatus ? cat.BreedingStatus : newBreedingStatus;
-                
+
                 ManagerApp.Footer("MASCOTA ACTUALIZADA CON ÉXITO");
 
             }
@@ -267,20 +274,75 @@ namespace VeterinaryCenter.Models
             ManagerApp.Header("PACIENTES GUARDADOS");
             foreach (Dog dog in Dogs)
             {
-                dog.ShowCustomer();
+                dog.ShowInformation();
             }
+
+            ManagerApp.Separator();
+
+            foreach (Cat cat in Cats)
+            {
+                cat.ShowInformation();
+            }
+            ManagerApp.Separator();
         }
 
-        public void ShowAnimal()
+
+        public void ShowAnimals(string type)
         {
-            ManagerApp.Header("Animal");
-            Animal.();
-            Console.WriteLine($"Nivel de membresía: {MembershipLevel}");
-            Console.WriteLine($"Método de pago: {PreferredPaymentMethod}");
+            Console.WriteLine("Ingrese el tipo de animal que desea ver: ");
+            Console.WriteLine(@"Seleccione el numero según corresponda
+            1. perro
+            2. gato
+            ");
+
+            type = Console.ReadLine();
+            type = type.Trim().ToLower();
+            switch (type)
+            {
+                case "1":
+                    foreach (Dog dog in Dogs)
+                    {
+                        dog.ShowInformation();
+                    }
+                    break;
+                case "2":
+                    foreach (Cat cat in Cats)
+                    {
+                        cat.ShowInformation();
+                    }
+                    break;
+                default:
+                    ManagerApp.Footer("OPCIÓN NO VALIDA");
+                    return;
+            }
+
         }
 
-        public void ShowPatient()
+        public void ShowPatient(string name)
         {
+            Console.WriteLine("Ingrese el tipo de animal: ");
+            Console.WriteLine(@"Seleccione el numero según corresponda
+            1. perro
+            2. gato
+            ");
+            string? animalType = Console.ReadLine();
+
+            Console.WriteLine("Ingrese el nombre de animal que desea ver: ");
+            name = Console.ReadLine();
+            name = name.Trim().ToLower();
+
+            switch (animalType)
+            {
+                case "1":
+                    Dog dog = Dogs.Find(d => d.GetName() == name);
+                    dog.ShowInformation();
+                    break;
+                case "2":
+                    Cat cat = Cats.Find(d => d.GetName() == name);
+                    cat.ShowInformation();
+                    break;
+
+            }
 
         }
 
