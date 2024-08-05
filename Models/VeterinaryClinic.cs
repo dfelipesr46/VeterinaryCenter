@@ -20,6 +20,269 @@ namespace VeterinaryCenter.Models
         }
 
 
-        
+        public void SaveDog()
+        {
+            ManagerApp.Header("AGREGANDO NUEVO PERRO");
+
+            Console.Write("Ingrese el nombre del Perro");
+            string? dogName = Console.ReadLine();
+
+
+
+        }
+        public void SaveCat()
+        {
+
+        }
+
+
+        public void UpdateDog()
+        {
+            ManagerApp.Header("ACTUALIZANDO INFORMACIÓN DEL PERRO");
+            Console.Write("Ingrese el nombre del perro: ");
+            string name = Console.ReadLine();
+            name = name.Trim();
+
+            Dog dog = Dogs.Find(d => d.GetName() == name);
+
+            if (dog != null)
+            {
+                Console.Write($"Nuevo nombre del perro o presione enter para mantener el mismo ({dog.GetName()}): ");
+                string? nameUpdate = Console.ReadLine();
+                nameUpdate = nameUpdate.Trim();
+                ManagerApp.Separator();
+
+                Console.Write($"¿Desea corregir la fecha de nacimiento del perro? o presione enter para mantener el mismo ({dog.GetBirthDate()}): ");
+                DateOnly birthDateUpdate = DateOnly.Parse(Console.ReadLine());
+                ManagerApp.Separator();
+
+                Console.Write($"Nueva Raza del perro o presione enter para mantener el mismo ({dog.GetBreed()}): ");
+                string? breedUpdate = Console.ReadLine();
+                breedUpdate = breedUpdate.Trim();
+                ManagerApp.Separator();
+
+                Console.Write($"Nuevo color del perro o presione enter para mantener el mismo ({dog.GetColor()}): ");
+                string? colorUpdate = Console.ReadLine();
+                colorUpdate = colorUpdate.Trim();
+                ManagerApp.Separator();
+
+                Console.Write($"Nuevo peso en Kilos del perro o presione enter para mantener el mismo ({dog.GetWeightInkg()}): ");
+                double weightInKgUpdate = double.Parse(Console.ReadLine());
+                ManagerApp.Separator();
+
+                Console.Write($"El perro está castrado? presione enter para mantener el mismo ({dog.BreedingStatus}): ");
+                Console.WriteLine("Si el perro ha sido castrado por favor escriba 'si' ");
+                string? breedingStatusUpdate = Console.ReadLine();
+                breedingStatusUpdate = breedingStatusUpdate.Trim().ToLower();
+                bool newBreedingStatus;
+
+                switch (breedingStatusUpdate)
+                {
+                    case "si":
+                        newBreedingStatus = true;
+                        break;
+                    default:
+                        ManagerApp.Footer("OPCIÓN NO VALIDA");
+                        return;
+                }
+
+                ManagerApp.Separator();
+
+                Console.Write(@"Ingrese el temperamento del perro (Escriba el número según corresponda): 
+                            1. Timido
+                            2. Normal
+                            3. Agresivo
+                            Ingresa una opción: ");
+                string? selectTemperament = Console.ReadLine();
+                selectTemperament = selectTemperament.Trim().ToLower();
+                string? temperamentUpdate = null;
+                switch (selectTemperament)
+                {
+                    case "1":
+                        temperamentUpdate = "Timido";
+                        break;
+                    case "2":
+                        temperamentUpdate = "Normal";
+                        break;
+                    case "3":
+                        temperamentUpdate = "Agresivo";
+                        break;
+                    default:
+                        ManagerApp.Footer("OPCIÓN NO VALIDA");
+                        return;
+                }
+                ManagerApp.Separator();
+
+
+                Console.Write($"Nuevo número de Micro Ship o presione enter para mantener el mismo ({dog.MicroShipNumber}): ");
+                string? microShipNumberUpdate = Console.ReadLine();
+                microShipNumberUpdate = microShipNumberUpdate.Trim();
+                ManagerApp.Separator();
+
+                Console.Write($"¿El ladrido del perro a cambiado? o presione enter para mantener el mismo ({dog.BarkVolume}): ");
+                string? barkVolumeUpdate = Console.ReadLine();
+                barkVolumeUpdate = barkVolumeUpdate.Trim().ToLower();
+                string? newBarkVolumeUpdate = null;
+                switch (barkVolumeUpdate)
+                {
+                    case "1":
+                        newBarkVolumeUpdate = "No ladra";
+                        break;
+                    case "2":
+                        newBarkVolumeUpdate = "Normal";
+                        break;
+                    case "3":
+                        newBarkVolumeUpdate = "Ladrido fuerte";
+                        break;
+                    default:
+                        ManagerApp.Footer("OPCIÓN NO VALIDA");
+                        return;
+                }
+                ManagerApp.Separator();
+
+                Console.Write($"El tipo de pelo actual es: ({dog.CoatType}), presione enter para continuar ");
+
+                dog.SetName(string.IsNullOrEmpty(nameUpdate) ? dog.GetName() : nameUpdate);
+                dog.SetBirthDate(birthDateUpdate == null ? dog.GetBirthDate() : birthDateUpdate);
+                dog.SetBreed(string.IsNullOrEmpty(breedUpdate) ? dog.GetBreed() : breedUpdate);
+                dog.SetColor(string.IsNullOrEmpty(colorUpdate) ? dog.GetColor() : colorUpdate);
+                dog.SetWeightInKg(weightInKgUpdate == null ? dog.GetWeightInkg() : weightInKgUpdate);
+                dog.BreedingStatus = newBreedingStatus ? dog.BreedingStatus : newBreedingStatus;
+                dog.Temperament = string.IsNullOrEmpty(temperamentUpdate) ? dog.Temperament : temperamentUpdate;
+                dog.BarkVolume = string.IsNullOrEmpty(newBarkVolumeUpdate) ? dog.BarkVolume : newBarkVolumeUpdate;
+                ManagerApp.Footer("MASCOTA ACTUALIZADA CON ÉXITO");
+
+            }
+        }
+        public void UpdateCat()
+        {
+            ManagerApp.Header("ACTUALIZANDO INFORMACIÓN DEL GATO");
+            Console.Write("Ingrese el nombre del gato: ");
+            string name = Console.ReadLine();
+            name = name.Trim();
+
+            Cat cat = Cats.Find(d => d.GetName() == name);
+
+            if (cat != null)
+            {
+                Console.Write($"Nuevo nombre del gato o presione enter para mantener el mismo ({cat.GetName()}): ");
+                string? nameUpdate = Console.ReadLine();
+                nameUpdate = nameUpdate.Trim();
+                ManagerApp.Separator();
+
+                Console.Write($"¿Desea corregir la fecha de nacimiento del gato? o presione enter para mantener el mismo ({cat.GetBirthDate()}): ");
+                DateOnly birthDateUpdate = DateOnly.Parse(Console.ReadLine());
+                ManagerApp.Separator();
+
+                Console.Write($"Nueva Raza del gato o presione enter para mantener el mismo ({cat.GetBreed()}): ");
+                string? breedUpdate = Console.ReadLine();
+                breedUpdate = breedUpdate.Trim();
+                ManagerApp.Separator();
+
+                Console.Write($"Nuevo color del gato o presione enter para mantener el mismo ({cat.GetColor()}): ");
+                string? colorUpdate = Console.ReadLine();
+                colorUpdate = colorUpdate.Trim();
+                ManagerApp.Separator();
+
+                Console.Write($"Nuevo peso en Kilos del gato o presione enter para mantener el mismo ({cat.GetWeightInkg()}): ");
+                double weightInKgUpdate = double.Parse(Console.ReadLine());
+                ManagerApp.Separator();
+
+                Console.Write($"El gato está castrado? presione enter para mantener el mismo ({cat.BreedingStatus}): ");
+                Console.WriteLine("Si el gato ha sido castrado por favor escriba 'si' ");
+                string? breedingStatusUpdate = Console.ReadLine();
+                breedingStatusUpdate = breedingStatusUpdate.Trim().ToLower();
+                bool newBreedingStatus;
+
+                switch (breedingStatusUpdate)
+                {
+                    case "si":
+                        newBreedingStatus = true;
+                        break;
+                    default:
+                        ManagerApp.Footer("OPCIÓN NO VALIDA");
+                        return;
+                }
+
+                ManagerApp.Separator();
+
+
+                Console.Write($"El tipo de pelo actual es: ({cat.FurLength}), presione enter para continuar ");
+
+
+
+                cat.SetName(string.IsNullOrEmpty(nameUpdate) ? cat.GetName() : nameUpdate);
+                cat.SetBirthDate(birthDateUpdate == null ? cat.GetBirthDate() : birthDateUpdate);
+                cat.SetBreed(string.IsNullOrEmpty(breedUpdate) ? cat.GetBreed() : breedUpdate);
+                cat.SetColor(string.IsNullOrEmpty(colorUpdate) ? cat.GetColor() : colorUpdate);
+                cat.SetWeightInKg(weightInKgUpdate == null ? cat.GetWeightInkg() : weightInKgUpdate);
+                cat.BreedingStatus = newBreedingStatus ? cat.BreedingStatus : newBreedingStatus;
+                
+                ManagerApp.Footer("MASCOTA ACTUALIZADA CON ÉXITO");
+
+            }
+        }
+
+
+        public void DeleteDog()
+        {
+            ManagerApp.Header("ELIMINANDO PERRO");
+            Console.Write("Ingrese el nombre del perro: ");
+            string? name = Console.ReadLine();
+            name = name.Trim().ToLower();
+
+            Dog dog = Dogs.Find(x => x.GetName() == name);
+            if (name != null)
+            {
+                Dogs.Remove(dog);
+                ManagerApp.Footer("PERRO ELIMINANDO CON ÉXITO");
+            }
+            else
+            {
+                ManagerApp.Footer("PERRO NO ENCONTRADO");
+            }
+        }
+        public void DeleteCat()
+        {
+            ManagerApp.Header("ELIMINANDO GATO");
+            Console.Write("Ingrese el nombre del gato: ");
+            string? name = Console.ReadLine();
+            name = name.Trim().ToLower();
+
+            Cat cat = Cats.Find(x => x.GetName() == name);
+            if (name != null)
+            {
+                Cats.Remove(cat);
+                ManagerApp.Footer("GATO ELIMINANDO CON ÉXITO");
+            }
+            else
+            {
+                ManagerApp.Footer("GATO NO ENCONTRADO");
+            }
+        }
+
+
+        public void ShowAllPatiens()
+        {
+            ManagerApp.Header("PACIENTES GUARDADOS");
+            foreach (Dog dog in Dogs)
+            {
+                dog.ShowCustomer();
+            }
+        }
+
+        public void ShowAnimal()
+        {
+            ManagerApp.Header("Animal");
+            Animal.();
+            Console.WriteLine($"Nivel de membresía: {MembershipLevel}");
+            Console.WriteLine($"Método de pago: {PreferredPaymentMethod}");
+        }
+
+        public void ShowPatient()
+        {
+
+        }
+
     }
 }

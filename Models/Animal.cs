@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace VeterinaryCenter.Models
 {
-    public class Animal
+    public abstract class Animal
     {
 
         protected int Id { get; set; }
@@ -40,28 +40,21 @@ namespace VeterinaryCenter.Models
         }
 
 
-        public void ShowInformation()
-        {
-            Console.WriteLine($"Nombre: {GetName()}");
-            Console.WriteLine($"Fecha de Cumpleaños: {GetBirthDate()}");
-            Console.WriteLine($"Raza: {GetBreed()}");
-            Console.WriteLine($"Color: {GetColor()}");
-            Console.WriteLine($"Peso en Kilos: {GetWeightInkg()}");
-        }
+        public abstract void ShowInformation();
 
         protected void BasicReview()
         {
 
         }
 
-        protected void CalculateAgeInMonths()
+        protected int CalculateAgeInMonths()
         {
-            var ageInMonths = DateTime.Now.Month - BirthDate.Month  ;
-            if (DateTime.Now.Month < BirthDate.Month)
+            int ageInMonths = (DateTime.Now.Year - BirthDate.Year) * 12 + DateTime.Now.Month - BirthDate.Month;
+            if (DateTime.Now.Day < BirthDate.Day)
             {
-                age--;
+                ageInMonths--;
             }
-            return age;
+            return ageInMonths;
         }
     }
 }
