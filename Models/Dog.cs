@@ -8,11 +8,11 @@ namespace VeterinaryCenter.Models
     public class Dog : Animal
     {
 
-        public bool BreedingStatus { get; set; }
+        public static bool BreedingStatus { get; set; }
         public string? Temperament { get; set; }
         public string? MicroShipNumber { get; set; }
         public string? BarkVolume { get; set; }
-        public string? CoatType { get; set; }
+        public static string? CoatType { get; set; }
 
         public Dog(bool breedingStatus, string? temperament, string? microShipNumber, string? barkVolume, string? coatType, string? name, DateOnly birthDate, string? breed, string? color, double weightInKg) :
         base(name, birthDate, breed, color, weightInKg)
@@ -29,14 +29,66 @@ namespace VeterinaryCenter.Models
             WeightInKg = weightInKg;
         }
 
-        public void CastrateAnimal()
+        public static void CastrateAnimal()
         {
+            ManagerApp.Header("INICIANDO PROCEDIMIENTO");
+            Console.Write("Debemos verificar que el animal no haya sido intervenido anteriormente, porfavor Ingrese el nombre del perro: ");
+            string name = Console.ReadLine();
+            name = name.Trim();
+
+            Dog dog = VeterinaryClinic.Dogs.Find(d => d.GetName() == name);
+
+            if (dog != null)
+            {
+
+                if (BreedingStatus == true)
+                {
+                    Console.WriteLine("El animal ya esta castrado");
+                }
+                else
+                {
+                    Console.WriteLine("Iniciando el proceso de Castración del animal");
+                    BreedingStatus = true;
+                }
+            }
+            else
+            {
+                Console.WriteLine("El animal no está registrado");
+
+            }
+
 
         }
 
-        public void Hairdress()
+        public static void Hairdress()
         {
+            ManagerApp.Header("INICIANDO PROCEDIMIENTO");
+            Console.Write("porfavor Ingrese el nombre del perro: ");
+            string name = Console.ReadLine();
+            name = name.Trim();
 
+            
+
+            Dog dog = VeterinaryClinic.Dogs.Find(d => d.GetName() == name);
+
+            if (dog != null)
+            {
+
+                if (BreedingStatus == true)
+                {
+                    Console.WriteLine("El animal ya esta castrado");
+                }
+                else
+                {
+                    Console.WriteLine("Iniciando el proceso de Castración del animal");
+                    BreedingStatus = true;
+                }
+            }
+            else
+            {
+                Console.WriteLine("El animal no está registrado");
+
+            }
         }
 
         public override void ShowInformation()

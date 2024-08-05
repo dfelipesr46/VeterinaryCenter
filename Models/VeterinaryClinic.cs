@@ -13,26 +13,15 @@ namespace VeterinaryCenter.Models
         public static List<Dog> Dogs { get; set; } = new List<Dog>();
         public static List<Cat> Cats { get; set; } = new List<Cat>();
 
-        public VeterinaryClinic(string? clinicName, string? adress)
-        {
-            ClinicName = clinicName;
-            Adress = adress;
-        }
-
 
         public void SaveDog()
         {
-            ManagerApp.Header("AGREGANDO NUEVO PERRO");
-
-            Console.Write("Ingrese el nombre del Perro");
-            string? dogName = Console.ReadLine();
-
-
+            ManagerApp.CreateDog();
 
         }
         public void SaveCat()
         {
-
+            ManagerApp.CreateCat();
         }
 
 
@@ -295,7 +284,7 @@ namespace VeterinaryCenter.Models
             2. gato
             ");
 
-            type = Console.ReadLine();
+            // type = Console.ReadLine();
             type = type.Trim().ToLower();
             switch (type)
             {
@@ -328,7 +317,7 @@ namespace VeterinaryCenter.Models
             string? animalType = Console.ReadLine();
 
             Console.WriteLine("Ingrese el nombre de animal que desea ver: ");
-            name = Console.ReadLine();
+            // name = Console.ReadLine();
             name = name.Trim().ToLower();
 
             switch (animalType)

@@ -12,7 +12,7 @@ namespace VeterinaryCenter.Models
         {
             Header("AGREGANDO NUEVO PERRO");
 
-            Console.Write("Ingrese el nombre del Perro");
+            Console.Write("Ingrese el nombre del Perro: ");
             string? dogName = Console.ReadLine();
             Separator();
 
@@ -71,10 +71,10 @@ namespace VeterinaryCenter.Models
                     temperamentUpdate = "Agresivo";
                     break;
                 default:
-                    ManagerApp.Footer("OPCIÓN NO VALIDA");
+                    Footer("OPCIÓN NO VALIDA");
                     return;
             }
-            ManagerApp.Separator();
+            Separator();
 
             Console.Write("Escriba el número del microship ");
             string microShipNumber = Console.ReadLine();
@@ -103,10 +103,10 @@ namespace VeterinaryCenter.Models
                     newBarkVolumeUpdate = "Ladrido fuerte";
                     break;
                 default:
-                    ManagerApp.Footer("OPCIÓN NO VALIDA");
+                    Footer("OPCIÓN NO VALIDA");
                     return;
             }
-            ManagerApp.Separator();
+            Separator();
 
             Console.Write($"¿Cual es el tipo de pelo del perro?: ");
             Console.WriteLine(@"
@@ -135,7 +135,7 @@ namespace VeterinaryCenter.Models
                     newCoatType = "Pelo Largo";
                     break;
                 default:
-                    ManagerApp.Footer("OPCIÓN NO VALIDA");
+                    Footer("OPCIÓN NO VALIDA");
                     return;
             }
             Separator();
@@ -150,7 +150,7 @@ namespace VeterinaryCenter.Models
         {
             Header("AGREGANDO NUEVO GATO");
 
-            Console.Write("Ingrese el nombre del Gato");
+            Console.Write("Ingrese el nombre del Gato: ");
             string? dogName = Console.ReadLine();
             Separator();
 
