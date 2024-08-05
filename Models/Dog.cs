@@ -14,8 +14,8 @@ namespace VeterinaryCenter.Models
         public string? BarkVolume { get; set; }
         public string? CoatType { get; set; }
 
-        public Dog(bool breedingStatus, string? temperament, string? microShipNumber, string? barkVolume, string? coatType, string? name, DateOnly birthDate, string? breed, string? color, double weightInKg) : 
-        base (name, birthDate, breed, color, weightInKg)
+        public Dog(bool breedingStatus, string? temperament, string? microShipNumber, string? barkVolume, string? coatType, string? name, DateOnly birthDate, string? breed, string? color, double weightInKg) :
+        base(name, birthDate, breed, color, weightInKg)
         {
             BreedingStatus = breedingStatus;
             Temperament = temperament;
@@ -36,9 +36,21 @@ namespace VeterinaryCenter.Models
 
         public void Hairdress()
         {
-            
+
         }
 
+        public override void ShowInformation()
+        {
+            Console.WriteLine($"Nombre: {GetName()}");
+            Console.WriteLine($"Fecha de Cumpleaños: {GetBirthDate()}");
+            Console.WriteLine($"Raza: {GetBreed()}");
+            Console.WriteLine($"Color: {GetColor()}");
+            Console.WriteLine($"Peso en Kilos: {GetWeightInkg()}");
+        }
 
+        internal void ShowInformation(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

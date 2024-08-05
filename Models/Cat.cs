@@ -23,5 +23,14 @@ namespace VeterinaryCenter.Models
             Color = color;
             WeightInKg = weightInKg;
         }
+
+        public override void ShowInformation()
+        {
+            Console.WriteLine($"Nombre: {GetName()}");
+            Console.WriteLine($"Fecha de Cumpleaños: {GetBirthDate()}");
+            Console.WriteLine($"Raza: {GetBreed()}");
+            Console.WriteLine($"Color: {GetColor()}");
+            Console.WriteLine($"Peso en Kilos: {GetWeightInkg()}");
+        }
     }
 }
