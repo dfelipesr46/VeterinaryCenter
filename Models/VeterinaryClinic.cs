@@ -59,7 +59,7 @@ namespace VeterinaryCenter.Models
                 double weightInKgUpdate = double.Parse(Console.ReadLine());
                 ManagerApp.Separator();
 
-                Console.Write($"El perro está castrado? presione enter para mantener el mismo ({dog.BreedingStatus}): ");
+                Console.Write($"El perro está castrado? presione enter para mantener el mismo ({Dog.BreedingStatus}): ");
                 Console.WriteLine("Si el perro ha sido castrado por favor escriba 'si' ");
                 string? breedingStatusUpdate = Console.ReadLine();
                 breedingStatusUpdate = breedingStatusUpdate.Trim().ToLower();
@@ -136,14 +136,14 @@ namespace VeterinaryCenter.Models
                 }
                 ManagerApp.Separator();
 
-                Console.Write($"El tipo de pelo actual es: ({dog.CoatType}), presione enter para continuar ");
+                Console.Write($"El tipo de pelo actual es: ({Dog.CoatType}), presione enter para continuar ");
 
                 dog.SetName(string.IsNullOrEmpty(nameUpdate) ? dog.GetName() : nameUpdate);
                 dog.SetBirthDate(birthDateUpdate == null ? dog.GetBirthDate() : birthDateUpdate);
                 dog.SetBreed(string.IsNullOrEmpty(breedUpdate) ? dog.GetBreed() : breedUpdate);
                 dog.SetColor(string.IsNullOrEmpty(colorUpdate) ? dog.GetColor() : colorUpdate);
                 dog.SetWeightInKg(weightInKgUpdate == null ? dog.GetWeightInkg() : weightInKgUpdate);
-                dog.BreedingStatus = newBreedingStatus ? dog.BreedingStatus : newBreedingStatus;
+                Dog.BreedingStatus = newBreedingStatus ? Dog.BreedingStatus : newBreedingStatus;
                 dog.Temperament = string.IsNullOrEmpty(temperamentUpdate) ? dog.Temperament : temperamentUpdate;
                 dog.BarkVolume = string.IsNullOrEmpty(newBarkVolumeUpdate) ? dog.BarkVolume : newBarkVolumeUpdate;
                 ManagerApp.Footer("MASCOTA ACTUALIZADA CON ÉXITO");
@@ -184,7 +184,7 @@ namespace VeterinaryCenter.Models
                 double weightInKgUpdate = double.Parse(Console.ReadLine());
                 ManagerApp.Separator();
 
-                Console.Write($"El gato está castrado? presione enter para mantener el mismo ({cat.BreedingStatus}): ");
+                Console.Write($"El gato está castrado? presione enter para mantener el mismo ({Cat.BreedingStatus}): ");
                 Console.WriteLine("Si el gato ha sido castrado por favor escriba 'si' ");
                 string? breedingStatusUpdate = Console.ReadLine();
                 breedingStatusUpdate = breedingStatusUpdate.Trim().ToLower();
@@ -203,7 +203,7 @@ namespace VeterinaryCenter.Models
                 ManagerApp.Separator();
 
 
-                Console.Write($"El tipo de pelo actual es: ({cat.FurLength}), presione enter para continuar ");
+                Console.Write($"El tipo de pelo actual es: ({Cat.FurLength}), presione enter para continuar ");
 
 
 
@@ -212,7 +212,7 @@ namespace VeterinaryCenter.Models
                 cat.SetBreed(string.IsNullOrEmpty(breedUpdate) ? cat.GetBreed() : breedUpdate);
                 cat.SetColor(string.IsNullOrEmpty(colorUpdate) ? cat.GetColor() : colorUpdate);
                 cat.SetWeightInKg(weightInKgUpdate == null ? cat.GetWeightInkg() : weightInKgUpdate);
-                cat.BreedingStatus = newBreedingStatus ? cat.BreedingStatus : newBreedingStatus;
+                Cat.BreedingStatus = newBreedingStatus ? Cat.BreedingStatus : newBreedingStatus;
 
                 ManagerApp.Footer("MASCOTA ACTUALIZADA CON ÉXITO");
 
